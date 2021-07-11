@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from . forms import ProfileUploadForm,CommentForm,ProfileForm
 from django.http  import HttpResponse
@@ -67,19 +67,6 @@ def like(request,pic_id):
 	like +=1
 	save_like()
 	return redirect(timeline)
-
-# @login_required(login_url='/accounts/login/')
-# def search_pic(request):
-
-# 	if "pic" in request.GET and request.GET["pic"]:
-# 		search_pic = request.GET.get("pic")
-# 		got_users = Profile.find_profile(search_pic)
-# 		message =f"{search_pic}"
-
-# 		return render(request,'my-inst/search_pic.html',{"got_users":got_users,"message":message})
-# 	else:
-# 		message = "Invalid username"
-# 		return render(request,'my-inst/search_pic.html',{"message":message})
 
 def search_results(request):
     if 'pic' in request.GET and request.GET["pic"]:
