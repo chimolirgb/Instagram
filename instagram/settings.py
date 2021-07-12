@@ -81,10 +81,12 @@ WSGI_APPLICATION = 'instagram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'inst',
         'USER': 'postgres',
     'PASSWORD':'Access',
+    'HOST': config('DB_HOST'),
+    'PORT': '',
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -114,7 +116,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Africa/Nairobi'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
